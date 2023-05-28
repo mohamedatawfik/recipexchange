@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Recipes</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>All Recipes</h1>
+  
+    <div class="row">
+      <% recipes.forEach(recipe => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="/images/recipe-<%= recipe.id %>.jpeg" class="card-img-top" alt="Recipe Image">
+            <div class="card-body">
+              <h5 class="card-title"><%= recipe.title %></h5>
+              <p class="card-text"><%= recipe.description %></p>
+              <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
