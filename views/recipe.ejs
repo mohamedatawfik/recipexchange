@@ -1,12 +1,27 @@
-<% extends layout %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Details</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Recipe Details</h1>
+    <h2><%= recipe.title %></h2>
+    <img src="/images/<%= recipe.image %>" alt="Recipe Image" class="img-fluid">
+    <p><%= recipe.description %></p>
+    <p>Ingredients:</p>
+    <ul>
+      <% recipe.ingredients.forEach(ingredient => { %>
+        <li><%= ingredient %></li>
+      <% }) %>
+    </ul>
+  </div>
 
-<% section('body') %>
-  <h1>Recipe Details</h1>
-  <h2>Recipe Title</h2>
-  <p>Recipe Description</p>
-  <p>Ingredients:</p>
-  <ul>
-    <li>Ingredient 1</li>
-    <li>Ingredient 2</li>
-    <li>Ingredient 3</li>
-    <!-- Loop through actual ingredient data and generate dynamic
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

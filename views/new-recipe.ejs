@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Recipe</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Create New Recipe</h1>
+
+    <form action="/recipes" method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="ingredients" class="form-label">Ingredients (comma-separated)</label>
+        <textarea class="form-control" id="ingredients" name="ingredients" rows="3" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" class="form-control" id="image" name="image" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create Recipe</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
