@@ -1,4 +1,11 @@
 // Recipe Controller
+const dbconnection = require('../model/dbconnection');
+// const RecipeModel = require('../model/recipeModel');
+
+const credential = {
+    email: "johndoe@gmail.com",
+    password: "johndoe123"
+};
 
 const recipes = [
 {
@@ -24,45 +31,55 @@ const recipes = [
 }
 ];
 
+// Index Controller using hardcoded recipes
 exports.getRecipes = (req, res) => {
 res.render('index', { pageTitle: 'Recipes', recipes });
 };
 
-exports.getNewRecipeForm = (req, res) => {
-res.render('new-recipe', { pageTitle: 'Create New Recipe' });
+
+// Index Controller using DB retrieved recipes
+
+// exports.getRecipes = (req, res) => {
+// try {
+// const recipes = await RecipeModel.find({}).exec();
+// console.log('List of recipes retrieved from MongoDB')
+// res.render('index', { pageTitle: 'Recipes', recipes });
+// } catch (err) {
+// console.log(err);
+// res.send("Error");
+// }
+// };
+
+/* Task 4.1: Get Recipe */
+exports.getRecipeById = (req, res) => {
+    const recipeId = req.params.id;
+    console.log('test');
+    const recipe = recipes.find((recipe) => recipe.id === parseInt(recipeId));
+
+    if (recipe) {
+        res.render('recipe', { pageTitle: 'Recipe Details', recipe });
+    } else {
+        res.status(404).send('Recipe not found');
+    }
+};
+/* Task 4.1: End */
+
+exports.loginUser = (req, res) => {
+    if (req.body.email == credential.email && req.body.password == credential.password) {
+        req.session.user = req.body.email;
+        res.redirect('/route');
+    } else {
+        res.end('Invalid Username');
+    }
 };
 
-exports.getRecipe = (req, res) => {
-const recipeId = req.params.id;
-// Logic to find the recipe by ID from the hardcoded data array
-const recipe = recipes.find(recipe => recipe.id === Number(recipeId));
-res.render('recipe', { pageTitle: 'Recipe Details', recipe });
-};
-
-exports.createRecipe = (req, res) => {
-// Logic to create a new recipe
-res.redirect('/');
-};
-
-exports.createRecipe = (req, res) => {
-// Retrieve the form data
-const { title, description, ingredients } = req.body;
-const image = req.file.filename; // Get the filename of the uploaded image
-
-// Generate a new recipe ID
-const newRecipeId = recipes.length + 1;
-
-// Create a new recipe object
-const newRecipe = {
-    id: newRecipeId,
-    title,
-    description,
-    ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
-    image
-};
-
-// Add the new recipe to the recipes array
-recipes.push(newRecipe);
-
-res.redirect('/');
+exports.logout = (req, res) => {
+    req.session.destroy(function (err) {
+        if (err) {
+            console.log(err);
+            res.send('Error');
+        } else {
+            res.render('login', { title: 'RecipeXchange App', logout: 'Logout Successful...!' });
+        }
+    });
 };

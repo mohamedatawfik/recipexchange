@@ -6,9 +6,16 @@
   <title>All Recipes</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
   <div class="container">
+    <%- include('partials/header') %>
     <h1>All Recipes</h1>
   
     <div class="row">
@@ -19,16 +26,17 @@
             <div class="card-body">
               <h5 class="card-title"><%= recipe.title %></h5>
               <p class="card-text"><%= recipe.description %></p>
-              <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">View Recipe</a>
+              <a href="/route/recipes/<%= recipe.id %>" class="btn btn-primary">View Recipe</a>
             </div>
           </div>
         </div>
       <% }) %>
     </div>
+    <%- include('partials/footer') %>
   </div>
 
       <!-- Create Recipe Button -->
-      <a href="/new-recipe" class="btn btn-success mt-4">Create Recipe</a>
+      <a href="/route/logout" class="btn btn-success mt-4">Logout</a>
     </div>
   
   <!-- Bootstrap JavaScript -->
