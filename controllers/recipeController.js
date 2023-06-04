@@ -36,20 +36,6 @@ exports.getRecipes = (req, res) => {
 res.render('index', { pageTitle: 'Recipes', recipes });
 };
 
-
-// Index Controller using DB retrieved recipes
-
-// exports.getRecipes = (req, res) => {
-// try {
-// const recipes = await RecipeModel.find({}).exec();
-// console.log('List of recipes retrieved from MongoDB')
-// res.render('index', { pageTitle: 'Recipes', recipes });
-// } catch (err) {
-// console.log(err);
-// res.send("Error");
-// }
-// };
-
 /* Task 4.1: Get Recipe */
 exports.getRecipeById = async (req, res) => {
     const recipeId = req.params.id;
