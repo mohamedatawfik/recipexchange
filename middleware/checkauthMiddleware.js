@@ -1,6 +1,6 @@
 // Middleware
 
-/* Task 4.2.2 Create logrequest Middleware */
+/* Task 3.2.2 Create Check Authentication Middleware */
 exports.checkAuth = (req, res, next) => {
     if (req.session.user) {
         console.log('Middleware 2 is working fine!');
@@ -10,4 +10,4 @@ exports.checkAuth = (req, res, next) => {
         res.send("Unauthorized User");
     }
 };
-/* Task 4.2.1 */
+/* Task 3.2.2 End */

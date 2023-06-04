@@ -6,7 +6,10 @@ const router = express.Router();
 const recipeController = require('../controllers/recipeController');
 const checkAuth = require('../middleware/checkauthMiddleware');
 
+/* Task 3.2.4 Use Check Authentication Middlware*/
 router.get('/recipes/:id', checkAuth.checkAuth, recipeController.getRecipeById);
+/* Task 3.2.4: End */
+
 /* Task 1.1: End */
 
 // All Recipes route

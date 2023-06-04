@@ -14,11 +14,13 @@
 
 </head>
 <body>
+    <!-- Task 4.1: Display recipes-->
     <%- include('partials/header') %>
+    <!-- Task 4.1: End-->
     <div class="container d-flex align-items-center justify-content-center vh-100">
         <div class="text-center">
           <h1>Recipe Details</h1>
-          <!-- Task 4: Display recipes-->
+          <!-- Task 4.2: Display recipes-->
           <h2><%= recipe.title %></h2>
           <img src="/images/<%= recipe.image %>" alt="Recipe Image" class="img-fluid">
           <p><%= recipe.description %></p>
@@ -27,7 +29,7 @@
             <% recipe.ingredients.forEach(ingredient => { %>
               <li><%= ingredient %></li>
             <% }) %>
-          <!-- Task 4: End -->
+          <!-- Task 4.2: End -->
           </ul>
         </div>
     </div>

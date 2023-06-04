@@ -36,7 +36,8 @@ exports.getRecipes = (req, res) => {
 res.render('index', { pageTitle: 'Recipes', recipes });
 };
 
-/* Task 4.1: Get Recipe */
+
+/* Task 3.1: Get Recipe */
 exports.getRecipeById = async (req, res) => {
     const recipeId = req.params.id;
     try {
@@ -52,7 +53,7 @@ exports.getRecipeById = async (req, res) => {
       res.send("Error");
     }
 };
-/* Task 4.1: End */
+/* Task 3.1: End */
 
 exports.loginUser = (req, res) => {
     if (req.body.email == credential.email && req.body.password == credential.password) {

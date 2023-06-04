@@ -9,8 +9,9 @@ const app = express();
 // Configure middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+/* Task 3.2.3 Use logrequest Middleware */
 const logRequest = require('./middleware/loggingMiddleware');
-
+/* Task 3.2.3 End */
 // Set view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -27,9 +28,9 @@ const recipeRoutes = require('./routes/recipeRoutes');
 /* Task 1.2: End */
 
 // Use middleware
-/* Task 4.2.2 Use logrequest Middleware */
+/* Task 3.2.3 Use logrequest Middleware */
 app.use(logRequest.logRequest);
-/* Task 4.2.2 End */
+/* Task 3.2.3 End */
 
 // Use routes
 /* Task 1.2 cont. : Use recipeRouter for path '/' and redirect any other path to '/' */
