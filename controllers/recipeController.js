@@ -1,6 +1,6 @@
 // Recipe Controller
 const dbconnection = require('../model/dbconnection');
-// const RecipeModel = require('../model/recipeModel');
+const RecipeModel = require('../model/recipeModel');
 
 const credential = {
     email: "johndoe@gmail.com",
@@ -51,15 +51,19 @@ res.render('index', { pageTitle: 'Recipes', recipes });
 // };
 
 /* Task 4.1: Get Recipe */
-exports.getRecipeById = (req, res) => {
+exports.getRecipeById = async (req, res) => {
     const recipeId = req.params.id;
-    console.log('test');
-    const recipe = recipes.find((recipe) => recipe.id === parseInt(recipeId));
-
-    if (recipe) {
+    try {
+      const recipe = await RecipeModel.findOne({ id: parseInt(recipeId) }).exec();
+      if (recipe) {
+        console.log('List of recipe ingredients retrieved from MongoDB');
         res.render('recipe', { pageTitle: 'Recipe Details', recipe });
-    } else {
+      } else {
         res.status(404).send('Recipe not found');
+      }
+    } catch (err) {
+      console.log(err);
+      res.send("Error");
     }
 };
 /* Task 4.1: End */

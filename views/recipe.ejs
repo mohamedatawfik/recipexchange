@@ -6,20 +6,31 @@
   <title>Recipe Details</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
-  <div class="container">
-    <h1>Recipe Details</h1>
-    <h2><%= recipe.title %></h2>
-    <img src="/images/<%= recipe.image %>" alt="Recipe Image" class="img-fluid">
-    <p><%= recipe.description %></p>
-    <p>Ingredients:</p>
-    <ul>
-      <% recipe.ingredients.forEach(ingredient => { %>
-        <li><%= ingredient %></li>
-      <% }) %>
-    </ul>
-  </div>
+    <%- include('partials/header') %>
+    <div class="container d-flex align-items-center justify-content-center vh-100">
+        <div class="text-center">
+          <h1>Recipe Details</h1>
+          <!-- Task 4: Display recipes-->
+          <h2><%= recipe.title %></h2>
+          <img src="/images/<%= recipe.image %>" alt="Recipe Image" class="img-fluid">
+          <p><%= recipe.description %></p>
+          <p>Ingredients:</p>
+          <ul>
+            <% recipe.ingredients.forEach(ingredient => { %>
+              <li><%= ingredient %></li>
+            <% }) %>
+          <!-- Task 4: End -->
+          </ul>
+        </div>
+    </div>
 
   <!-- Bootstrap JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
